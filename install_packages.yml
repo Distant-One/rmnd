@@ -1,0 +1,21 @@
+# install list of packagesa
+#
+---
+- hosts: basic_apps
+  become: yes
+  become_method: "sudo"
+  gather_facts: no
+  connection: ssh
+
+  tasks:
+    - include_vars: ./vars/apps_vars.yml
+
+    - name: "Install basic list of applications"
+      package:  
+         name: "{{item.appname}}"
+         state: present
+      become: yes
+      become_method: "sudo"
+      with_items: "{{basic}}"
+
+

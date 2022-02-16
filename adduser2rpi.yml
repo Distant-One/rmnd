@@ -1,0 +1,63 @@
+# Add a default users to rpi using an existing account i.e pi
+# commandline  ansible-playbook adduser2rpi.yml -i <host file> -u <current rpi user> --ask-pass -K  
+# commandline  ansible-playbook adduser2rpi.yml --ask-become-pass -K  
+# Requires a ./vars/user_vars.yml file with the new account uusername and upassword defined
+---
+- hosts: newrpi
+  become: yes
+  become_method: sudo
+  gather_facts: no
+  connection: ssh
+
+  tasks:
+    - name: "Ping server."
+      action: ping
+
+    - include_vars: ./vars/user_vars.yml
+
+    - group: name=adm state=present
+    - group: name=dialout state=present
+    - group: name=cdrom state=present
+    - group: name=sudo state=present
+    - group: name=audio state=present
+    - group: name=video state=present
+    - group: name=plugdev state=present
+    - group: name=games state=present
+    - group: name=users state=present
+    - group: name=input state=present
+    - group: name=netdev state=present
+    - group: name=gpio state=present
+    - group: name=i2c state=present
+    - group: name=spi state=present
+    - group: name=wireshark state=present system=yes
+      become: yes
+      become_method: "sudo"
+
+    - name: "Add user"
+      user: name={{item.uusername}}
+            state=present
+            update_password=on_create
+            skeleton=/etc/skel
+            create_home=yes
+            shell=/bin/bash
+            append=yes
+            groups={{item.ugroups}}
+            password={{item.upassword|password_hash('sha512')}}
+            generate_ssh_key=yes
+            ssh_key_type="ed25519"
+            ssh_key_comment="{{item.uusername}}@{{inventory_hostname_short}}"
+      become: yes
+      become_method: "sudo"
+      with_items: "{{users}}"
+      
+    - name: "Uploading public key"
+      authorized_key:
+            user={{ item.uusername }}
+            state=present
+            manage_dir=yes
+            key="{{ lookup('file', '~/.ssh/id_ed25519.pub') }}"
+      become: yes
+      become_method: "sudo"
+      with_items: "{{users}}"
+
+

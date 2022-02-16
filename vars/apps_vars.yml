@@ -1,0 +1,14 @@
+# List of apps to be installed
+---
+basic:
+  - appname: htop
+  - appname: nmap
+  - appname: tree
+  - appname: gparted
+  - appname: gddrescue
+  - appname: git
+
+
+nettest:
+  - appname: wireshark
+#  - appname: stunnel

@@ -1,0 +1,21 @@
+# Add a default users to rpi using an existing account i.e pi
+# commandline  ansible-playbook ping.yml -i <host file> -u <current rpi user> --ask-pass -K  
+# commandline  ansible-playbook ping.yml 
+# Requires a ./vars/user_vars.yml file with the new account uusername and upassword defined
+---
+- hosts: newrpi
+  become: yes
+  become_method: sudo
+  gather_facts: no
+  connection: ssh
+
+  tasks:
+    - include_vars: ./vars/user_vars.yml
+    
+    - name: "Ping server."
+      action: ping
+
+   
+
+  
+
