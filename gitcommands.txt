@@ -1,4 +1,6 @@
 git status
+if cloned without setting up anything fo ssh:
+  	git remote set-url origin git@github.com:Distant-One/rmnd.git
 On branch main
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
