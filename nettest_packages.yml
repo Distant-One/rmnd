@@ -1,4 +1,4 @@
-# install list of packagesa
+# install list of packages
 #
 ---
 - hosts: nettest_apps

@@ -1,0 +1,35 @@
+#example list of hosts for these ansible playbooks
+# copy this file to hosts and edit it with your hostnames/ipaddresses
+[update]
+#<ipaddress or hostname  of device linux device 1>
+#<ipaddress or hostname  of device linux device 2>
+# ...
+#<ipaddress or hostname  of device linux device n>
+
+
+[rpi]
+#<ipaddress or hostname of raspbery pi device 1> ansible_user=<username for ansible>
+#<ipaddress or hostname of raspbery pi device 2> ansible_user=<username for ansible>
+# ...
+#<ipaddress or hostname of raspbery pi device 3> ansible_user=<username for ansible>
+
+[servers]
+#<ipaddress or hostname of server 1> ansible_user=<username for ansible>
+#<ipaddress or hostname of server 2> ansible_user=<username for ansible>
+# ...
+#<ipaddress or hostname of server n> ansible_user=<username for ansible>
+
+# List if devices to install basic apps on
+[basic_apps]
+#<ipaddress or hostname of device to install basic apps 1>
+#<ipaddress or hostname of device to install basic apps 2>
+# ...
+#<ipaddress or hostname of device to install basic apps 3>
+
+# List if devices to install network test apps on
+[nettest]
+#<ipaddress or hostname of device to install network test apps 1>
+#<ipaddress or hostname of device to install network test apps 2>
+# ...
+#<ipaddress or hostname of device to install network test apps 3>
+

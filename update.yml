@@ -2,7 +2,7 @@
 # Command: ansible-playbook -i ./hosts update.yml --ask-become-pass -K
 #
 ---
-- hosts: upgrade_rpi
+- hosts: update
   become: yes
   become_method: "sudo"
   gather_facts: no

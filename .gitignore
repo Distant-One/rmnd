@@ -1,4 +1,5 @@
 hosts
+ansible.cfg
 inventory
 *.ini
 ./vars/user_vars.yml

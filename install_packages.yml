@@ -1,5 +1,7 @@
-# install list of packagesa
+# install list of basic apps 
 #
+# usage ansible-playbook -i ./hosts install_packages.yml --ask-become-pass
+
 ---
 - hosts: basic_apps
   become: yes

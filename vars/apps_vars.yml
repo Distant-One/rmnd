@@ -1,15 +1,17 @@
 # List of apps to be installed
 ---
+# Basic apps to be installed on all devices
 basic:
   - appname: htop
   - appname: nmap
   - appname: tree
-  - appname: gparted
-  - appname: gddrescue
   - appname: git
   - appname: bytop
+  - appname: iperf
+#  - appname: gparted
+#  - appname: gddrescue
 
-
+# Network test apps to be install on specific devices used for network testing
 nettest:
   - appname: wireshark
 #  - appname: stunnel

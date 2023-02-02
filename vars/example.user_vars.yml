@@ -1,0 +1,11 @@
+# ./vars/admin_user_vars.yml
+# Default list of names, passwords and groups
+# Used when adding an ansible user to a device
+# Groups list is based on rpi pi user plus wiresahrk user
+---
+users:
+    #ansible user
+  - uusername: <ansible user name>
+    upassword: <ansible user password>
+    ugroups: adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,input,netdev,gpio,i2c,spi,wireshark
+
